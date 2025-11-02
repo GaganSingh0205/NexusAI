@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusAI - The Future, Integrated</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a0e17;
+            --secondary: #00f5ff;
+            --accent1: #8a2be2;
+            --accent2: #ffffff;
+            --background: #1a1a2e;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--background) 100%);
+            color: var(--accent2);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--secondary), var(--accent1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--accent2);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--secondary), var(--accent1));
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Enhanced Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent1);
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent1));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links > li > a {
+            color: var(--accent2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links > li > a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links > li > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links > li > a:hover::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--accent2);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--secondary);
+            padding-left: 25px;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Page System */
+        .page {
+            display: none;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .neural-network {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        .core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px var(--secondary);
+            animation: pulse 4s infinite alternate;
+        }
+
+        .node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent2);
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px var(--accent1);
+        }
+
+        .node-1 {
+            top: 10%;
+            left: 20%;
+            background: rgba(0, 245, 255, 0.2);
+        }
+
+        .node-2 {
+            top: 10%;
+            right: 20%;
+            background: rgba(138, 43, 226, 0.2);
+        }
+
+        .node-3 {
+            bottom: 20%;
+            left: 10%;
+            background: rgba(0, 245, 255, 0.2);
+        }
+
+        .node-4 {
+            bottom: 10%;
+            right: 30%;
+            background: rgba(138, 43, 226, 0.2);
+        }
+
+        .connection {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--secondary), transparent);
+            transform-origin: top center;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px 0;
+            overflow: hidden;
+        }
+
+        .trust-bar h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+
+        .logo-scroll {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        .logo-item {
+            flex-shrink: 0;
+            width: 200px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0 30px;
+        }
+
+        /* Featured AI Agents */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .agent-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent1));
+        }
+
+        .agent-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        .agent-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .agent-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .agent-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Image Styles */
+        .img-container {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .agent-card:hover .img-container img {
+            transform: scale(1.05);
+        }
+
+        .team-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--secondary);
+        }
+
+        .blog-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .tech-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent1));
+            border-radius: 50%;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 50px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent1));
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(138, 43, 226, 0.1));
+            padding: 100px 0;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--accent2);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent2);
+        }
+
+        .newsletter button {
+            padding: 0 20px;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* AI Technology Section */
+        .tech-section {
+            padding: 80px 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .tech-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-header {
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .pricing-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            border: 1px solid var(--secondary);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--accent2);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent2);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 50px var(--secondary);
+            }
+            100% {
+                box-shadow: 0 0 80px var(--accent1);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                margin-bottom: 50px;
+            }
+            
+            .neural-network {
+                width: 400px;
+                height: 400px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                padding: 10px 0 0 0;
+                display: none;
+            }
+
+            .nav-links li.active .dropdown {
+                display: block;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 15px;
+            }
+            
+            .neural-network {
+                width: 300px;
+                height: 300px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .agent-card, .testimonial {
+                padding: 20px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo" data-page="home">
+                    <div class="logo-img">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    Nexus<span>AI</span>
+                </a>
+                <ul class="nav-links">
+                    <li>
+                        <a href="#" data-page="home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" data-page="agents">AI Agents <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="#" data-page="agents" data-agent="quantum">Quantum Analyst</a></li>
+                            <li><a href="#" data-page="agents" data-agent="imaginai">ImaginAI</a></li>
+                            <li><a href="#" data-page="agents" data-agent="codesynth">CodeSynth</a></li>
+                            <li><a href="#" data-page="agents" data-agent="logic">Logic Nexus</a></li>
+                            <li><a href="#" data-page="agents" data-agent="legal">LegalMind</a></li>
+                            <li><a href="#" data-page="agents" data-agent="medi">MediScan</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" data-page="technology">Technology <i class="fas fa-chevron-down" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
+                        <ul class="dropdown">
+                            <li><a href="#" data-page="technology" data-tech="neural">Neural Architecture</a></li>
+                            <li><a href="#" data-page="technology" data-tech="federated">Federated Learning</a></li>
+                            <li><a href="#" data-page="technology" data-tech="ethical">Ethical AI Framework</a></li>
+                            <li><a href="#" data-page="technology" data-tech="quantum">Quantum Computing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-page="pricing">Pricing</a></li>
+                    <li><a href="#" data-page="blog">Blog</a></li>
+                    <li><a href="#" data-page="about">About</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="#" class="btn btn-secondary" id="login-btn">Login</a>
+                    <a href="#" class="btn btn-primary" id="signup-btn">Sign Up</a>
+                </div>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div class="page active" id="home-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Harness the Power of Multiple AI, Seamlessly Unified</h1>
+                        <p>NexusAI connects you to a network of specialized artificial intelligence agents for work, creativity, and problem-solving.</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn btn-primary" data-page="pricing">Get Started</a>
+                            <a href="#" class="btn btn-secondary" id="watch-demo">Watch Demo</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="neural-network">
+                            <div class="core"></div>
+                            <div class="node node-1"><i class="fas fa-chart-bar"></i></div>
+                            <div class="node node-2"><i class="fas fa-palette"></i></div>
+                            <div class="node node-3"><i class="fas fa-code"></i></div>
+                            <div class="node node-4"><i class="fas fa-search"></i></div>
+                            <div class="connection" style="transform: rotate(30deg) translateY(-200px);"></div>
+                            <div class="connection" style="transform: rotate(120deg) translateY(-180px);"></div>
+                            <div class="connection" style="transform: rotate(210deg) translateY(-220px);"></div>
+                            <div class="connection" style="transform: rotate(300deg) translateY(-190px);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Bar -->
+        <section class="trust-bar">
+            <div class="container">
+                <h3>Trusted by Industry Leaders</h3>
+                <div class="logo-scroll">
+                    <div class="logo-item">TechGlobal</div>
+                    <div class="logo-item">InnoWave</div>
+                    <div class="logo-item">FutureSys</div>
+                    <div class="logo-item">DataSphere</div>
+                    <div class="logo-item">NexTech</div>
+                    <div class="logo-item">QuantumLeap</div>
+                    <div class="logo-item">CyberDyne</div>
+                    <div class="logo-item">OmniCorp</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured AI Agents -->
+        <section class="agents">
+            <div class="container">
+                <h2>Featured AI Agents</h2>
+                <div class="agents-grid">
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Quantum Analyst">
+                        </div>
+                        <div class="agent-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Quantum Analyst</h3>
+                        <p>For data forecasting and market insights with unparalleled accuracy.</p>
+                        <a href="#" class="btn btn-secondary" data-page="agents" data-agent="quantum">Learn More</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="ImaginAI">
+                        </div>
+                        <div class="agent-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>ImaginAI</h3>
+                        <p>Generate stunning art, compelling copy, and original music compositions.</p>
+                        <a href="#" class="btn btn-secondary" data-page="agents" data-agent="imaginai">Learn More</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="CodeSynth">
+                        </div>
+                        <div class="agent-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>CodeSynth</h3>
+                        <p>Automate coding, debugging, and software architecture with precision.</p>
+                        <a href="#" class="btn btn-secondary" data-page="agents" data-agent="codesynth">Learn More</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Logic Nexus">
+                        </div>
+                        <div class="agent-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Logic Nexus</h3>
+                        <p>Advanced research and data mining for scientific breakthroughs.</p>
+                        <a href="#" class="btn btn-secondary" data-page="agents" data-agent="logic">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Select</h3>
+                        <p>Choose your AI agent or define a custom task from our extensive library.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Integrate</h3>
+                        <p>Connect your data sources securely via our API or intuitive interface.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Execute</h3>
+                        <p>Get intelligent, actionable results in seconds, not hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Clients Say</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"NexusAI transformed our data analysis process. What used to take weeks now happens in hours with Quantum Analyst. The insights have been invaluable for our strategic planning."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JS</div>
+                            <div class="author-info">
+                                <h4>Jessica Sterling</h4>
+                                <p>CEO, TechGlobal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <div class="container">
+                <h2>Ready to Build the Future?</h2>
+                <a href="#" class="btn btn-primary" data-page="pricing">Create Your Account</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- AI Agents Page -->
+    <div class="page" id="agents-page">
+        <section class="hero">
+            <div class="container">
+                <h1>Our AI Agents</h1>
+                <p>Specialized intelligence for every task. Explore our suite of AI agents designed to transform how you work, create, and innovate.</p>
+            </div>
+        </section>
+
+        <section class="agents">
+            <div class="container">
+                <div class="agents-grid">
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Quantum Analyst">
+                        </div>
+                        <h3>Quantum Analyst</h3>
+                        <p>Advanced predictive analytics and data forecasting with machine learning algorithms that adapt to your business needs.</p>
+                        <ul>
+                            <li>Market trend analysis</li>
+                            <li>Risk assessment</li>
+                            <li>Financial forecasting</li>
+                            <li>Competitive intelligence</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" id="quantum-demo">See in Action</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="ImaginAI">
+                        </div>
+                        <h3>ImaginAI</h3>
+                        <p>Creative companion for artists, writers, and marketers. Generate original content across multiple media formats.</p>
+                        <ul>
+                            <li>AI-generated artwork</li>
+                            <li>Copywriting and content creation</li>
+                            <li>Music composition</li>
+                            <li>Brand identity development</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" id="imaginai-demo">See in Action</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="CodeSynth">
+                        </div>
+                        <h3>CodeSynth</h3>
+                        <p>Your AI pair programmer. Write, debug, and optimize code across multiple languages and frameworks.</p>
+                        <ul>
+                            <li>Automated code generation</li>
+                            <li>Bug detection and fixes</li>
+                            <li>Code optimization</li>
+                            <li>Documentation generation</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" id="codesynth-demo">See in Action</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Logic Nexus">
+                        </div>
+                        <h3>Logic Nexus</h3>
+                        <p>Research assistant that accelerates scientific discovery through data mining and pattern recognition.</p>
+                        <ul>
+                            <li>Literature review automation</li>
+                            <li>Hypothesis generation</li>
+                            <li>Data pattern recognition</li>
+                            <li>Experimental design</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" id="logic-demo">See in Action</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="LegalMind">
+                        </div>
+                        <h3>LegalMind</h3>
+                        <p>AI legal assistant that analyzes contracts, case law, and regulations to support legal professionals.</p>
+                        <ul>
+                            <li>Contract analysis</li>
+                            <li>Legal research</li>
+                            <li>Compliance monitoring</li>
+                            <li>Document review</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" id="legalmind-demo">See in Action</a>
+                    </div>
+                    <div class="agent-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="MediScan">
+                        </div>
+                        <h3>MediScan</h3>
+                        <p>Healthcare AI that assists in diagnosis, treatment planning, and medical research.</p>
+                        <ul>
+                            <li>Medical image analysis</li>
+                            <li>Patient data interpretation</li>
+                            <li>Drug interaction checking</li>
+                            <li>Treatment recommendation</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" id="mediscan-demo">See in Action</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- AI Technology Page -->
+    <div class="page" id="technology-page">
+        <section class="hero">
+            <div class="container">
+                <h1>AI Technology</h1>
+                <p>Discover the cutting-edge technology powering our AI agents and how we're pushing the boundaries of artificial intelligence.</p>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <div class="container">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Neural Architecture" class="tech-img">
+                        </div>
+                        <h3>Neural Architecture</h3>
+                        <p>Our proprietary neural network design enables efficient learning and adaptation across diverse tasks and domains.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="tech-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Federated Learning" class="tech-img">
+                        </div>
+                        <h3>Federated Learning</h3>
+                        <p>Train models across decentralized devices while keeping data localized for enhanced privacy and security.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="tech-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Ethical AI Framework" class="tech-img">
+                        </div>
+                        <h3>Ethical AI Framework</h3>
+                        <p>Comprehensive guidelines and technical safeguards to ensure responsible and transparent AI development.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="tech-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Quantum Computing" class="tech-img">
+                        </div>
+                        <h3>Quantum Computing</h3>
+                        <p>Leveraging quantum algorithms to solve complex optimization problems beyond classical computing capabilities.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="tech-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Multimodal Models" class="tech-img">
+                        </div>
+                        <h3>Multimodal Models</h3>
+                        <p>AI systems that understand and generate content across text, images, audio, and video simultaneously.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="tech-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Autonomous Agents" class="tech-img">
+                        </div>
+                        <h3>Autonomous Agents</h3>
+                        <p>Self-improving AI systems that can set goals, plan actions, and learn from outcomes without human intervention.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>Our Technology Stack</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Processing</h3>
+                        <p>Advanced pipelines for cleaning, labeling, and augmenting training data at scale.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Model Training</h3>
+                        <p>Distributed training infrastructure that accelerates model development and iteration.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Deployment</h3>
+                        <p>Seamless integration of trained models into production environments with monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Pricing Page -->
+    <div class="page" id="pricing-page">
+        <section class="hero">
+            <div class="container">
+                <h1>Simple, Transparent Pricing</h1>
+                <p>Choose the plan that fits your needs. All plans include access to our core AI agents with no hidden fees.</p>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <div class="pricing-toggle">
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <button class="btn btn-secondary" id="toggle-pricing">Toggle Annual Pricing (Save 20%)</button>
+                    </div>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Basic</h3>
+                            <p>For individuals and small teams</p>
+                        </div>
+                        <div class="price monthly">$29<span>/month</span></div>
+                        <div class="price annual hidden">$23<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>Access to 2 AI agents</li>
+                            <li>100 requests per month</li>
+                            <li>Standard support</li>
+                            <li>Basic analytics</li>
+                            <li>Community forum access</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary">Get Started</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <p>For growing businesses</p>
+                        </div>
+                        <div class="price monthly">$79<span>/month</span></div>
+                        <div class="price annual hidden">$63<span>/month</span></div>
+                        <ul class="pricing-features">
+                            <li>Access to all AI agents</li>
+                            <li>1,000 requests per month</li>
+                            <li>Priority support</li>
+                            <li>Advanced analytics</li>
+                            <li>API access</li>
+                            <li>Custom integrations</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <p>For large organizations</p>
+                        </div>
+                        <div class="price monthly">Contact Us</div>
+                        <div class="price annual hidden">Contact Us</div>
+                        <ul class="pricing-features">
+                            <li>Unlimited AI agents</li>
+                            <li>Unlimited requests</li>
+                            <li>24/7 dedicated support</li>
+                            <li>Custom model training</li>
+                            <li>White-label solutions</li>
+                            <li>On-premise deployment</li>
+                        </ul>
+                        <a href="#" class="btn btn-secondary">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Not Sure Which Plan Is Right?</h2>
+                <p>Schedule a consultation with our AI experts to find the perfect solution for your needs.</p>
+                <a href="#" class="btn btn-primary" id="schedule-consultation">Schedule Consultation</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Page -->
+    <div class="page" id="blog-page">
+        <section class="hero">
+            <div class="container">
+                <h1>NexusAI Blog</h1>
+                <p>Insights, updates, and thought leadership on artificial intelligence and its transformative impact.</p>
+            </div>
+        </section>
+
+        <section class="blog">
+            <div class="container">
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Human-AI Collaboration" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3>The Future of Human-AI Collaboration</h3>
+                            <div class="blog-meta">
+                                <span>June 15, 2023</span>
+                                <span>5 min read</span>
+                            </div>
+                            <p>Exploring how AI agents will augment human capabilities rather than replace them in the workplace of tomorrow.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Ethical AI" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Ethical AI: Building Trust Through Transparency</h3>
+                            <div class="blog-meta">
+                                <span>May 28, 2023</span>
+                                <span>7 min read</span>
+                            </div>
+                            <p>How NexusAI implements ethical guidelines and explainable AI to ensure responsible technology development.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Financial Forecasting" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Case Study: Quantum Analyst in Financial Forecasting</h3>
+                            <div class="blog-meta">
+                                <span>April 12, 2023</span>
+                                <span>10 min read</span>
+                            </div>
+                            <p>How a leading investment firm used our Quantum Analyst to improve their forecasting accuracy by 42%.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Creative AI" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Creative AI: The New Renaissance</h3>
+                            <div class="blog-meta">
+                                <span>March 30, 2023</span>
+                                <span>6 min read</span>
+                            </div>
+                            <p>Examining how AI is transforming creative industries from art and music to writing and design.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="AI in Software Development" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Beyond Code Generation: The Future of AI in Software Development</h3>
+                            <div class="blog-meta">
+                                <span>February 18, 2023</span>
+                                <span>8 min read</span>
+                            </div>
+                            <p>How CodeSynth is evolving from a coding assistant to a full software development partner.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Scientific Discovery" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Accelerating Scientific Discovery with AI</h3>
+                            <div class="blog-meta">
+                                <span>January 5, 2023</span>
+                                <span>9 min read</span>
+                            </div>
+                            <p>How research institutions are using Logic Nexus to dramatically reduce time-to-discovery in scientific research.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div class="page" id="about-page">
+        <section class="hero">
+            <div class="container">
+                <h1>About NexusAI</h1>
+                <p>We're on a mission to democratize artificial intelligence by making powerful AI agents accessible to everyone.</p>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2021 by a team of AI researchers and engineers from leading tech companies, NexusAI was born from a simple observation: while AI technology was advancing rapidly, it remained inaccessible to most organizations and individuals.</p>
+                        <p>We set out to change that by creating a platform that connects users to a network of specialized AI agents, each designed to excel at specific tasks while working together seamlessly.</p>
+                        <p>Today, NexusAI serves thousands of customers worldwide, from individual creators to Fortune 500 companies, all united by a common goal: to harness the power of AI to solve complex problems and unlock new possibilities.</p>
+                    </div>
+                    <div class="about-visual">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="NexusAI Office">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team">
+            <div class="container">
+                <h2>Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Alexandra Dawson" class="team-img">
+                        <h3>Alexandra Dawson</h3>
+                        <p>CEO & Founder</p>
+                        <p>Former AI Research Lead at TechGlobal with 15+ years in machine learning.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Marcus Rodriguez" class="team-img">
+                        <h3>Marcus Rodriguez</h3>
+                        <p>CTO</p>
+                        <p>PhD in Computer Science from Stanford, specializing in neural networks.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sophia Johnson" class="team-img">
+                        <h3>Sophia Johnson</h3>
+                        <p>Head of Product</p>
+                        <p>Product management veteran with experience at multiple successful AI startups.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Kenji Watanabe" class="team-img">
+                        <h3>Kenji Watanabe</h3>
+                        <p>Lead AI Researcher</p>
+                        <p>Focused on ethical AI development and multimodal learning systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Join Our Mission</h2>
+                <p>We're always looking for talented people who are passionate about shaping the future of AI.</p>
+                <a href="#" class="btn btn-primary">View Open Positions</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NexusAI</h3>
+                    <p>The future of AI integration, delivering powerful solutions for businesses and creators worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="agents">AI Agents</a></li>
+                        <li><a href="#" data-page="technology">AI Technology</a></li>
+                        <li><a href="#" data-page="pricing">Pricing</a></li>
+                        <li><a href="#" data-page="blog">Blog</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new features and AI insights.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NexusAI. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">Don't have an account? <a href="#" id="switch-to-signup">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Create Your Account</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Demo Modal -->
+    <div class="modal" id="demo-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2 id="demo-title">AI Agent Demo</h2>
+            <div id="demo-content">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        document.querySelectorAll('[data-page]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page') + '-page';
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.hamburger').innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Enhanced Mobile Menu Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            
+            // Toggle hamburger icon
+            if (navLinks.classList.contains('active')) {
+                this.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Mobile dropdown functionality
+        document.querySelectorAll('.nav-links > li').forEach(item => {
+            if (item.querySelector('.dropdown')) {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Modal functionality
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const loginModal = document.getElementById('login-modal');
+        const signupModal = document.getElementById('signup-modal');
+        const demoModal = document.getElementById('demo-modal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.classList.add('active');
+        });
+
+        signupBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            signupModal.classList.add('active');
+        });
+
+        document.getElementById('switch-to-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.classList.remove('active');
+            signupModal.classList.add('active');
+        });
+
+        document.getElementById('switch-to-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            signupModal.classList.remove('active');
+            loginModal.classList.add('active');
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                loginModal.classList.remove('active');
+                signupModal.classList.remove('active');
+                demoModal.classList.remove('active');
+            });
+        });
+
+        // Demo buttons
+        document.getElementById('watch-demo').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('demo-title').textContent = 'NexusAI Platform Demo';
+            document.getElementById('demo-content').innerHTML = `
+                <p>Experience the power of our unified AI platform in this comprehensive demo.</p>
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <i class="fas fa-play-circle" style="font-size: 4rem; color: #00f5ff;"></i>
+                    </div>
+                    <p>Video player would be embedded here in a real implementation</p>
+                </div>
+                <p>See how multiple AI agents work together seamlessly to solve complex business problems.</p>
+            `;
+            demoModal.classList.add('active');
+        });
+
+        // Agent demo buttons
+        const agentDemos = {
+            'quantum-demo': {
+                title: 'Quantum Analyst Demo',
+                content: `
+                    <p>See how Quantum Analyst processes complex data to generate accurate forecasts.</p>
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4 style="color: #00f5ff; margin-bottom: 15px;">Sample Analysis Output</h4>
+                        <p><strong>Market Trend:</strong> Upward trajectory detected with 94% confidence</p>
+                        <p><strong>Risk Assessment:</strong> Low volatility expected over next quarter</p>
+                        <p><strong>Recommendation:</strong> Increase investment in emerging markets</p>
+                    </div>
+                    <p>Quantum Analyst uses advanced machine learning algorithms to identify patterns and predict market movements with unprecedented accuracy.</p>
+                `
+            },
+            'imaginai-demo': {
+                title: 'ImaginAI Demo',
+                content: `
+                    <p>Watch ImaginAI create original artwork based on text descriptions.</p>
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center;">
+                        <div style="background: linear-gradient(135deg, #8a2be2, #00f5ff); height: 200px; display: flex; justify-content: center; align-items: center; border-radius: 10px;">
+                            <p style="color: #0a0e17; font-weight: bold;">Generated Artwork: "Cyberpunk Cityscape at Night"</p>
+                        </div>
+                    </div>
+                    <p>ImaginAI can generate images, music, and text content across various styles and formats to bring your creative visions to life.</p>
+                `
+            },
+            'codesynth-demo': {
+                title: 'CodeSynth Demo',
+                content: `
+                    <p>See how CodeSynth generates and optimizes code based on your requirements.</p>
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin: 20px 0; font-family: monospace;">
+                        <pre style="color: #00f5ff; margin: 0;">
+// Generated by CodeSynth
+function calculateFibonacci(n) {
+    if (n <= 1) return n;
+    let a = 0, b = 1;
+    for (let i = 2; i <= n; i++) {
+        let temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return b;
+}</pre>
+                    </div>
+                    <p>CodeSynth can write, debug, and optimize code in multiple programming languages, dramatically accelerating development workflows.</p>
+                `
+            },
+            'logic-demo': {
+                title: 'Logic Nexus Demo',
+                content: `
+                    <p>See how Logic Nexus accelerates scientific research through data analysis.</p>
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4 style="color: #00f5ff; margin-bottom: 15px;">Research Findings</h4>
+                        <p><strong>Hypothesis:</strong> Compound X shows promise for treating Condition Y</p>
+                        <p><strong>Data Analysis:</strong> 87% correlation found in clinical trial data</p>
+                        <p><strong>Recommendation:</strong> Proceed to Phase 2 trials with adjusted dosage</p>
+                    </div>
+                    <p>Logic Nexus can process vast amounts of scientific literature and experimental data to generate insights and accelerate discovery.</p>
+                `
+            },
+            'legalmind-demo': {
+                title: 'LegalMind Demo',
+                content: `
+                    <p>See how LegalMind analyzes legal documents and identifies key clauses.</p>
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4 style="color: #00f5ff; margin-bottom: 15px;">Contract Analysis Results</h4>
+                        <p><strong>Document Type:</strong> Service Agreement</p>
+                        <p><strong>Key Clauses Identified:</strong> Termination, Liability, Payment Terms</p>
+                        <p><strong>Risk Level:</strong> Medium - Review liability limitations</p>
+                    </div>
+                    <p>LegalMind can analyze contracts, identify potential issues, and compare documents against relevant case law and regulations.</p>
+                `
+            },
+            'mediscan-demo': {
+                title: 'MediScan Demo',
+                content: `
+                    <p>See how MediScan assists in medical diagnosis and treatment planning.</p>
+                    <div style="background: #1a1a2e; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <h4 style="color: #00f5ff; margin-bottom: 15px;">Diagnostic Analysis</h4>
+                        <p><strong>Patient Symptoms:</strong> Fever, cough, fatigue</p>
+                        <p><strong>Possible Conditions:</strong> Influenza (72% probability), COVID-19 (65% probability), Common cold (45% probability)</p>
+                        <p><strong>Recommended Tests:</strong> Rapid flu test, COVID-19 PCR test</p>
+                    </div>
+                    <p>MediScan can analyze symptoms, medical images, and patient history to assist healthcare professionals in diagnosis and treatment planning.</p>
+                `
+            }
+        };
+
+        // Add event listeners to all demo buttons
+        Object.keys(agentDemos).forEach(buttonId => {
+            document.getElementById(buttonId).addEventListener('click', function(e) {
+                e.preventDefault();
+                const demo = agentDemos[buttonId];
+                document.getElementById('demo-title').textContent = demo.title;
+                document.getElementById('demo-content').innerHTML = demo.content;
+                demoModal.classList.add('active');
+            });
+        });
+
+        // Pricing toggle
+        document.getElementById('toggle-pricing').addEventListener('click', function() {
+            document.querySelectorAll('.monthly, .annual').forEach(element => {
+                element.classList.toggle('hidden');
+            });
+            
+            if (this.textContent.includes('Annual')) {
+                this.textContent = 'Toggle Monthly Pricing';
+            } else {
+                this.textContent = 'Toggle Annual Pricing (Save 20%)';
+            }
+        });
+
+        // Form submissions
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Login functionality would be implemented here with backend integration');
+            loginModal.classList.remove('active');
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Signup functionality would be implemented here with backend integration');
+            signupModal.classList.remove('active');
+        });
+
+        // Consultation button
+        document.getElementById('schedule-consultation').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Consultation scheduling would be implemented here');
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+            if (e.target === signupModal) {
+                signupModal.classList.remove('active');
+            }
+            if (e.target === demoModal) {
+                demoModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
